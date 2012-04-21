@@ -6,7 +6,7 @@ What about building your own Debian system ?
   livarp-xxs provide an ultra-minimal environment,
   it allows you to build your own Debian system nearly from scratch:
 
-  - base system     : Debian Squeeze, the Stable release
+  - base system     : Debian Squeeze, the stable release
   - login           : startx, the basic one
   - window-manager  : TWM, the original one
   - file-manager    : MidnightCommander, the classic one
@@ -14,10 +14,9 @@ What about building your own Debian system ?
   - navigator       : lynx, the bugfree one
   - package-manager : aptitude, the cli one
   - monitoring      : htop, xosview & conky
-  - system          : 
   - gtk/utils       : none ... "nearly from scratch".... :)
 
-no automounting, no wireless gui suport, no 3D effects, no sudo group....
+no automounting, no wireless gui support, no 3D effects, no sudo group....
     livarp-xxs is here to let you install only what YOU want
     - with a minimal impact on your system,
     - with some utils to help you get out the TTY :)
