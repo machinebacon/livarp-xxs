@@ -1,0 +1,200 @@
+##############################################
+#      twm configuration file ~/.twmrc       #
+# author: arpinux 2012 <contact@arpinux.org> #
+##############################################
+
+## general options ###########################
+# fonts
+TitleFont       "-*-snap-normal-*-*-*-10-*-*-*-*-*-*-*"
+ResizeFont      "-*-snap-normal-*-*-*-10-*-*-*-*-*-*-*"
+MenuFont        "-*-snap-normal-*-*-*-10-*-*-*-*-*-*-*"
+IconFont        "-*-snap-normal-*-*-*-10-*-*-*-*-*-*-*"
+IconManagerFont "-*-snap-normal-*-*-*-10-*-*-*-*-*-*-*"
+# borders width
+BorderWidth 1
+MenuBorderWidth 1
+IconBorderWidth 1
+TitleButtonBorderWidth 1
+# reduce titlebar space
+SqueezeTitle
+# reduction factor for buttons
+ButtonIndent 3
+# never highlight
+NoHighlight
+NoTitleHighlight
+# don't use X server for menu or opaque move
+NoGrabServer
+# don't wait to reach an edge to resize
+AutoRelativeResize
+# space between border/button/text in titilebar
+FramePadding 0
+# don't raise window while moving
+NoRaiseOnMove
+# try to restore windows states
+RestartPreviousState
+# display IconManager on startup
+ShowIconManager
+# IconManager geometry and columns
+IconManagerGeometry "150x200+5+5" 1
+# factor of zoom animation
+Zoom 8
+# iconify window only in IconManager
+IconifyByUnmapping
+# windows without titlebar
+NoTitle { "xclock" "xosview" "MPlayer" }
+# windows don't appears in IconManager
+#IconManagerDontShow { "xclock" "xosview" }
+
+## general colors ############################
+Color {
+    BorderColor         "gray70" #{"xclock" "ForestGreen"} # specific color
+    DefaultBackground   "gray25"
+    DefaultForeground   "gray85"
+    TitleBackground     "gray25"
+    TitleForeground     "gray85"
+    MenuBackground      "gray25"
+    MenuForeground      "gray85"
+    MenuTitleBackground "gray95"
+    MenuTitleForeground "gray25"
+    MenuBorderColor     "gray65"
+    MenuShadowColor     "gray55"
+    IconBackground      "gray25"
+    IconForeground      "gray65"
+    IconBorderColor     "gray85"
+    PointerForeground   "gray25"
+    PointerBackground   "gray85"
+    IconManagerBackground   "gray25"
+    IconManagerForeground   "gray85"
+    IconManagerHighlight    "gray85"
+}
+
+## mousebinds ################################
+# how many pixel before moving
+MoveDelta 1
+# functions
+Function "move-or-lower" { f.move f.deltastop f.lower }
+Function "move-or-raise" { f.move f.deltastop f.raise }
+Function "move-or-iconify" { f.move f.deltastop f.iconify }
+# mouse actions on root window
+Button1 = : root : f.menu "main"    # open main menu on left-clic
+Button2 = : root : f.identify       # identify window on middle-clic
+Button3 = : root : f.menu "config"  # open config menu on right-clic
+# mouse action on window or icon
+Button1 = m : window|icon : f.function "move-or-lower"  # move/lower with Alt+left-clic
+Button2 = m : window|icon : f.iconify   # toggle iconify with Alt+middle-clic
+Button3 = m : window|icon : f.resize    # resize with Alt+right-clic
+# mouse action on window titlebar
+Button1 = : title : f.function "move-or-raise"  # move/raise on left-clic
+Button2 = : title : f.raiselower    # toggle raise on middle-clic
+Button3 = : title : f.menu "size"   # open size menu on right-clic
+# mouse action on icon
+Button1 = : icon : f.function "move-or-iconify" # move/iconify on left-clic
+Button2 = : icon : f.delete     # close window on middle-clic
+Button3 = : icon : f.iconify    # toggle iconify on right-clic
+# mouse action on icon-manager
+Button1 = : iconmgr : f.iconify # toggle iconify on left-clic
+Button2 = : iconmgr : f.destroy # kill the window on middle-clic
+Button3 = : iconmgr : f.iconify # toggle iconify on right-clic
+
+## keybinds ##################################
+# launch applications
+# Super+d: dmenu launcher
+"d" = m4 : all : f.exec "dmenu-bind.sh &"
+# Super+t: terminal emulator
+"t" = m4 : all : f.exec "urxvt &"
+# Super+f: mc cli filer
+"f" = m4 : all : f.exec "urxvt -e mc &"
+# Super+w: lynx web browser
+"w" = m4 : all : f.exec "urxvt -e lynx http://arpinux.org/livarp_start &"
+
+# window navigation
+"Tab" = m : all : f.circleup
+# test
+# windows actions
+"m" = m4 : all : f.fullzoom # Super+m: toggle maximize window
+"i" = m4 : all : f.iconify  # Super+i: toggle iconify window
+"q" = m4 : all : f.delete   # Super+q: close window
+"x" = m4 : all : f.destroy  # Super+x: kill window
+
+## menus #####################################
+# main menu
+menu "main" {
+    "TWM"       ("gray95":"gray25")f.title
+    "URxvt"     f.exec "urxvt &"
+    "MC"        f.exec "urxvt -e mc &"
+    "Run"       f.exec "dmenu-bind.sh &"
+    "Edit"      f.exec "urxvt -e vim &"
+    "Web"       f.exec "urxvt -e lynx http://arpinux.org/livarp_start &"
+    "IRC"       f.exec "urxvt -e weechat-curses &"
+    "Keyboard"  f.menu "keyboard"
+    "Config"    f.menu "config"
+    "System"    f.menu "system"
+    "Windows"   f.menu "window"
+    "Quit"      f.menu "quit"
+}
+# config menu
+menu "config" {
+    "TWM config"    ("green":"gray25")f.title
+    "Edit"          f.exec "urxvt -e vim .twmrc &"
+    "Restart"       f.restart
+    "Man"           f.exec "urxvt -e man twm &"
+}
+# keyboard menu
+menu "keyboard" {
+    "layouts"   ("cyan":"gray25")f.title
+    "Fr"        f.exec "setxkbmap fr"
+    "Us"        f.exec "setxkbmap us"
+    "Gb"        f.exec "setxkbmap gb"
+    "De"        f.exec "setxkbmap de"
+    "Es"        f.exec "setxkbmap es"
+}
+# system menu
+menu "system" {
+    "System" 	("blue":"gray25")f.title
+    "Xosview"	f.exec "xosview &"
+    "HTop"		f.exec "urxvt -e htop &"
+    "Aptitude"  f.exec "urxvt -e aptitude &"
+}
+# window menu
+menu "window" {
+    "X Windows"     ("yellow":"gray25")f.title
+    "Maximize"      f.fullzoom
+    "Minimize"      f.iconify
+    "Identify"      f.identify
+    "Close Window"  f.delete
+    "Kill Window"   ("red":"gray25")f.destroy
+    "Show Iconmgr"  f.showiconmgr
+    "Hide Iconmgr"  f.hideiconmgr
+}
+# adjust size menu
+menu "size" {
+    "Adjust"    ("purple":"gray25")f.title
+    "Maximize"  f.fullzoom
+    "Resize"    f.resize
+    "ZoomRight" f.rightzoom 
+    "ZoomLeft"  f.leftzoom
+    "ZoomHor"   f.horizoom
+    "ZoomTop"   f.topzoom
+    "ZoomBot"   f.bottomzoom
+}
+# exit menu
+menu "quit" {
+    "Quit?" ("red":"gray25")f.title
+    "No"    f.nop
+    "Yes"   f.quit
+}
+## cursors ###################################
+Cursors {
+    Frame     "left_ptr"
+    Title     "left_ptr"
+    Icon      "left_ptr"
+    IconMgr   "left_ptr"
+    Move      "fleur"
+    Resize    "fleur"
+    Menu      "hand1"
+    Button    "hand2"
+    Wait      "clock"
+    Select    "dot"
+    Destroy   "pirate"
+}
+## EOF #######################################

@@ -13,7 +13,8 @@ What about building your own Debian system ?
   - editors         : nano & vim
   - navigator       : lynx, the bugfree one
   - package-manager : aptitude, the cli one
-  - monitoring      : htop, xosview & conky
+  - monitoring      : htop & xosview
+  - launcher        : dmenu
   - gtk/utils       : none ... "nearly from scratch".... :)
 
 no automounting, no wireless gui support, no 3D effects, no sudo group....
