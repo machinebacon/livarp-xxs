@@ -17,12 +17,18 @@ What about building your own Debian system ?
   - launcher        : dmenu
   - gtk/utils       : none ... "nearly from scratch".... :)
 
-no automounting, no wireless gui support, no 3D effects, no sudo group....
+no automounting, no wireless gui support, no 3D effects....
     livarp-xxs is here to let you install only what YOU want
     - with a minimal impact on your system,
     - with some utils to help you get out the TTY :)
 
-livarp-xxs is an advanced-users oriented distro but can be a good start for a middle-user too..
-if you are new to GNU/Linux, prefer a conventionnal distro like Linux Mint, CrunchBang Linux or SalixOS (or maybe livarp*regular)
+livarp-xxs is an advanced-users oriented distro
+    but can be a good start for a middle-user too..
+
+if you are new to GNU/Linux, prefer a conventionnal distro like
+    Linux Mint <http://linuxmint.com>,
+    CrunchBang Linux <http://crunchbanglinux.org>,
+    SalixOS <http://www.salix.org>,
+    or maybe livarp*regular
 
 happy building :)
