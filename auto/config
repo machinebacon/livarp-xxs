@@ -10,7 +10,7 @@
         --volatile true \
         --backports true \
         --packages-lists "standard-x11" \
-        --package "twm mc fbxkb unrar p7zip-full bzip2 tar zip unzip \
+        --package "vtwm mc fbxkb unrar p7zip-full bzip2 tar zip unzip \
         lynx weechat vim rxvt-unicode-lite htop \
         feh xfonts-terminus x11-apps usbutils xosview \
         firmware-linux firmware-linux-free firmware-linux-nonfree \
